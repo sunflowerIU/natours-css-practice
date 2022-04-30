@@ -1,0 +1,212 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
+$color-white: #fff;
+$color-grey-dark: #777;
+$color-black: #000;
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Lato" sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: $color-grey-dark;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+html {
+  /* 62.5% = 10px if 16px is 100%(default size) */
+  font-size: 62.5%; /* keeping initial fontsize to 62.5% because 100% is 16px(default size) so that we can keep others with rem*/
+}
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.9),
+      rgba($color-primary-dark, 0.9)
+    ),
+    url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative;
+
+  /* logo */
+  &__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 3.5rem;
+  }
+
+  /* text-box */
+  &__text-box {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}
+
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+
+  &--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+
+    /* animation-delay:1s  wait 1s before starting animation
+            nimation-iteration-count: 3;  animation happens 3 times
+    
+        */
+  }
+
+  &--sub {
+    display: block;
+    font-weight: 700;
+    letter-spacing: 0.84rem;
+    animation: moveInRight 1.5s ease-out;
+  }
+}
+
+/* animations for heading text */
+/* @keyframes anyAmimationName */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    opacity: 0.8;
+    transform: translateX(1.2rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  80% {
+    opacity: 0.8;
+    transform: translateX(-1.2rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+//button styling
+.btn {
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all 0.2s;
+    position: relative;
+    font-size: 1.6rem;
+  }
+
+  &--animated {
+    animation: moveup 1s ease-out 0.7s;
+    animation-fill-mode: backwards; /* this will use animation when in delay is happening, means it will keep btn opacity 0 before starting animation */
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &::after {
+        background-color: $color-white;
+      }
+
+  }
+
+  &:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 10px 20px rgba($color-black, 0.2);
+
+    &::after {
+        transform: scaleX(2) scaleY(1.4);
+        transition: all 0.3s;
+        opacity: 0;
+      }
+
+  }
+
+  &:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 5px 10px rgba($color-black, 0.2);
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    border-radius: 10rem;
+  }
+
+  
+
+ 
+}
+
+//btn move up
+@keyframes moveup {
+  0% {
+    opacity: 0;
+    transform: translateY(5rem);
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
