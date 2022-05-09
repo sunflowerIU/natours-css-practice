@@ -1,0 +1,8 @@
+@mixin clearFlix {
+    &::after{
+        content: '';
+        display: table;
+        clear: both;
+
+    }
+}

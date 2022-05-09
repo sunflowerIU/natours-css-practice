@@ -1,0 +1,29 @@
+// about section
+.section-about {
+  background-color: $color-grey-light-1;
+  padding: 25rem 0;
+  margin-top: -20vh;
+}
+
+//section-feature
+.section-features {
+  padding: 20rem 0;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.9),
+      rgba($color-primary-dark, 0.9)
+    ),
+    url(../img/nat-4.jpg);
+  background-size: cover;
+
+  //another way of making slanted edge
+  transform: skewY(-7deg);
+  margin-top: -8rem;
+
+  //since the children are slanted 7deg, then we need to make its children to it normal, we will do that by selecting direct child and skewing them reverse to parent
+   //when we use * it means it will select direct child only(not all other children element), and * is used to select all
+  & > *{
+    transform: skewY(7deg);
+    }
+
+}
